@@ -1,8 +1,8 @@
 /*
 Eric Li
 APCS1 pd4
-HW #36: Be Rational
-2016-11-28 
+HW #37: Be More Rational
+2016-11-30
  */
 
 
@@ -49,14 +49,44 @@ public class Rational {
 	numerator=x.denominator*numerator;
 
     }
+    // just takes the numerators and multiply by the other numbers denom and adds
+    // denom is just denom miltiplied by other denom
+    public void add (Rational x){
+       numerator= (numerator*x.denominator)+(x.numerator*  denominator);
+       denominator=denominator *x.denominator;
+    }
+    // same as add but with a subtract
+    public void subtract (Rational x){
+       numerator= (numerator*x.denominator)-(x.numerator*  denominator);
+       denominator=denominator *x.denominator;
+    }
+    // Euclid's GDC, checks if one is 0
+    // Recurisvely passes the second number and the modulo
+    public static int gcd(int x, int y) {
+        if (y == 0){
+	    return x;
+	}
+        else{
+	    return gcd(y, x % y);
+	}
+    }
+    // creates local var called dGCD and divides the num and denom
+    public void reduce (){
+	int  dGCD= gcd (numerator, denominator);
+	numerator/= dGCD;
+	denominator/=dGCD;
 
+    }
     public static void main( String[] args )
     {
-
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
 	Rational s = new Rational(1,2); //Stores the rational number 1/2
-	r.multiply(s); //Multiplies r by s, changes r to 2/6.  s remains 1/2
+	Rational t = new Rational(4,18); //Stores the rational number 4/18
+	r.add(s);  //Adds r to s, changes r to 7/6.  s remains 1/2
 	System.out.println(r);
+	System.out.println(s);
+	t.reduce(); //Changes t to 2/9
+	System.out.println(t);
 
 
     }
