@@ -4,8 +4,6 @@ APCS1 pd4
 HW #37: Be More Rational
 2016-11-30
  */
-
-
 public class Rational {
     private int numerator;
     private int denominator;
@@ -26,28 +24,23 @@ public class Rational {
     }
     //return each component seperately
     public String toString (){
-
 	return "Your number is: "+numerator+ "/"+denominator;
-
     }
     // divides the two numbers and returns it using double
     public double floatValue(){
 	double numb;
 	numb=numerator/denominator;
 	return numb;
-
     }
     // multiplies using the other object denom by denom, num by num
     public void multiply(Rational x){
         denominator=x.denominator*denominator;
 	numerator=x.numerator*numerator;
-
     }
     // same as multiply but reversed
     public void  divide(Rational x){
         denominator=denominator*x.numerator;
 	numerator=x.denominator*numerator;
-
     }
     // just takes the numerators and multiply by the other numbers denom and adds
     // denom is just denom miltiplied by other denom
@@ -75,7 +68,6 @@ public class Rational {
 	int  dGCD= gcd (numerator, denominator);
 	numerator/= dGCD;
 	denominator/=dGCD;
-
     }
     public static void main( String[] args )
     {
@@ -87,13 +79,5 @@ public class Rational {
 	System.out.println(s);
 	t.reduce(); //Changes t to 2/9
 	System.out.println(t);
-
-
     }
-
-
-
-
-
-
 }
