@@ -70,8 +70,8 @@ public class Rational {
 	denominator/=dGCD;
     }
     public int compareTo(Rational x){
-	a=floatValue();
-	b=x.floatValue();
+	double a=floatValue();
+	double b=x.floatValue();
 	if (a>b){
 	    return 1;}
 	else if (b<a){
