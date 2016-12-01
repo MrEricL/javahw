@@ -69,6 +69,17 @@ public class Rational {
 	numerator/= dGCD;
 	denominator/=dGCD;
     }
+    public int compareTo(Rational x){
+	a=floatValue();
+	b=x.floatValue();
+	if (a>b){
+	    return 1;}
+	else if (b<a){
+	    return -1;}
+	else{
+	    return 0}
+
+    }
     public static void main( String[] args )
     {
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
