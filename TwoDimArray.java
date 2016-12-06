@@ -4,7 +4,6 @@ APCS1 pd4
 HW #38: Arrays of Arrays
 2016-12-01 
  */
-
 public class TwoDimArray {
      //postcond: prints each row of 2D integer array a on its own line
     //          uses a FOR loop
