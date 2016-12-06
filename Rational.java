@@ -69,15 +69,14 @@ public class Rational {
 	numerator/= dGCD;
 	denominator/=dGCD;
     }
-    public int compareTo(Rational x){
-	double a=floatValue();
-	double b=x.floatValue();
-	if (a>b){
-	    return 1;}
-	else if (b<a){
-	    return -1;}
-	else{
-	    return 0}
+    public int compareTo(Object x){
+	Rational a = (Rational) x;
+	int p= a.denominator *denominator;
+	int q = a.numerator*denominator;
+	int g = numerator * a. denominator;
+	if (p==q) return 0;
+	else if (p>q) return  -1;
+	else return 1;
 
     }
     public static void main( String[] args )
