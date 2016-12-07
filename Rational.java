@@ -93,6 +93,6 @@ public class Rational {
 	System.out.println(s);
 	t.reduce(); //Changes t to 2/9
 	System.out.println(t); */
-	System.out.println (r.compareTo(s));
+        r.equals(d);
     }
 }
