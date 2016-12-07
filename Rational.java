@@ -79,20 +79,29 @@ public class Rational {
 	else return 1;
     }
     public boolean equals ( Object x){
-	Rational y    = (Rational) x;
-	if (y instanceof Rational && compareTo(y)==0) return true;
+	//	Rational y  = (Rational) x;
+	if (x instanceof Rational && compareTo(x)==0) return true;
+	else if (x instanceof Rational && compareTo(x)!=0) return false;
 	else throw new ClassCastException ("\n compareTo() input not a rational");
     }
     public static void main( String[] args )
     {
+	Rational u = new Rational (4,6); 
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
 	Rational s = new Rational(1,2); //Stores the rational number 1/2
 	Rational t = new Rational(4,18); //Stores the rational number 4/18
+	Swapper z= new Swapper();
 	/*	r.add(s);  //Adds r to s, changes r to 7/6.  s remains 1/2
 	System.out.println(r);
 	System.out.println(s);
 	t.reduce(); //Changes t to 2/9
 	System.out.println(t); */
+<<<<<<< HEAD
         r.equals(d);
+=======
+	System.out.println (r.equals(s)); // different values
+	System.out.println (r.equals(s)); // identical values
+	System.out.println (r.equals(z)); // checks with different object	
+>>>>>>> 6b11faf322216a9e0a32828c8266d1120b3e5a67
     }
 }
