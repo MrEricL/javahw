@@ -96,8 +96,12 @@ public class Rational {
 	System.out.println(s);
 	t.reduce(); //Changes t to 2/9
 	System.out.println(t); */
+<<<<<<< HEAD
+        r.equals(d);
+=======
 	System.out.println (r.equals(s)); // different values
 	System.out.println (r.equals(s)); // identical values
 	System.out.println (r.equals(z)); // checks with different object	
+>>>>>>> 6b11faf322216a9e0a32828c8266d1120b3e5a67
     }
 }
