@@ -4,8 +4,7 @@
   expansion on-demand, and read/write capability on elements.
   ==================================================*/
 
-public class SuperArray implements ListInt 
-{
+public class SuperArray implements List{
     private int[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
     private int _size;    //number of meaingful values
@@ -13,13 +12,12 @@ public class SuperArray implements ListInt
     //default constructor
     //initializes 10-item array
     public SuperArray() 
-    { 
-	_data = new int[10];
+    {	_data = new int[10];
 	_lastPos = -1;
 	_size = 0;	
     }
 
-
+    //-------------------------------------------- Methods--------------------------------------------------------
     //output array in [a,b,c] format
     //eg, for int[] a = {1,2,3} ...
     //toString() -> "[1,2,3]"
@@ -61,7 +59,7 @@ public class SuperArray implements ListInt
 	return temp;
     }
     // implmented stuff
-    public void add( int newVal ) 
+    public void add( Object x )   // FIX 
     {if ( _size >= _data.length )
 	    expand(); 
 	_data[_lastPos+1] = newVal;
@@ -70,7 +68,7 @@ public class SuperArray implements ListInt
     }
 
     // adds and shifts
-    public void add( int index, int newVal )
+    public void add( int index, int newVal )  // FIX
     {
 	if ( _size >= _data.length )
 	    expand();
@@ -104,24 +102,6 @@ public class SuperArray implements ListInt
     //main method for testing
     public static void main( String[] args ) 
     {
-        ListInt test = new SuperArray();
-	SuperArray curtis=(SuperArray)test; //typecasting it
-	System.out.println("Printing empty ListInt...");
-	System.out.println(curtis);
-
-	for( int i = 0; i < curtis._data.length; i++ ) {
-	    curtis.set(i,i*2);
-	    curtis._size++; 
-	}
-
-	System.out.println("Printing populated ListInt...");
-	System.out.println(curtis);
-
-
-	System.out.println("Expanding the ListInt");
-	curtis.expand();
-	System.out.println(curtis);
-
 	ListInt  mayfield = new SuperArray();
 	System.out.println("Printing empty ListInt mayfield...");
 	System.out.println(mayfield);
