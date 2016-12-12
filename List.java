@@ -11,8 +11,9 @@ that later the SuperArray will implement/define better and use
  */
 
 public interface List{
-    void add(int newVal);
-    void add(int index, int newVal);
-    void remove(int index);
+    void add(Object x);
+    void get (int index);
+    void set (int index, Object o);
+    void size ();
 
 }
