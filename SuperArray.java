@@ -5,14 +5,14 @@
   ==================================================*/
 
 public class SuperArray implements List{
-    private int[] _data;  //underlying container structure
+    private Object[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
     private int _size;    //number of meaingful values
 
     //default constructor
     //initializes 10-item array
     public SuperArray() 
-    {	_data = new int[10];
+    {	_data = new Object[10];
 	_lastPos = -1;
 	_size = 0;	
     }
@@ -37,7 +37,7 @@ public class SuperArray implements List{
     //double capacity of this instance of SuperArray 
     private void expand() 
     { 
-	int[] temp = new int[ _data.length * 2 ];
+	Object[] temp = new Object[ _data.length * 2 ];
 	for( int i = 0; i < _data.length; i++ )
 	    temp[i] = _data[i];
 	_data = temp;
@@ -45,30 +45,31 @@ public class SuperArray implements List{
 
 
     //accessor method -- return value at specified index
-    public int get( int index ) 
+    public Object get( int index ) 
     {
 	return _data[index];
     }
 
 
     //mutator method -- set index to newVal, return old value at index
-    public int set( int index, int newVal ) 
+    public Object set( int index, Object newVal ) 
     {
- 	int temp = _data[index];
+ 	Object temp = _data[index];
 	_data[index] = newVal;
 	return temp;
     }
     // implmented stuff
-    public void add( Object x )   // FIX 
+    public boolean add( Object newVal )   // FIX 
     {if ( _size >= _data.length )
 	    expand(); 
 	_data[_lastPos+1] = newVal;
 	_lastPos+=1;
 	_size+=1;
+	return true;
     }
 
     // adds and shifts
-    public void add( int index, int newVal )  // FIX
+    public boolean  add( int index, Object newVal )  // FIX
     {
 	if ( _size >= _data.length )
 	    expand();
@@ -78,18 +79,21 @@ public class SuperArray implements List{
 	_data[index] = newVal;
 	_lastPos+=1;
 	_size+=1;
+	return true;
     }
 
 
     //removes the item at an index
-    public void remove( int index ) 
-    { 
+    public Object remove( int index ) 
+    { Object  z=null;
 	for( int i=index; i < _size - 1; i++ ) {
+	    z=_data[i];
 	    _data[i] = _data[i+1];
 	}
 	_data[_size-1] = 0; 
 	_size-=1;
 	_lastPos-=1;
+	return z;
     }
 
     //returns the size
@@ -102,7 +106,9 @@ public class SuperArray implements List{
     //main method for testing
     public static void main( String[] args ) 
     {
-	ListInt  mayfield = new SuperArray();
+	//	Object  mayf = new SuperArray();
+	SuperArray mayfield = new SuperArray();
+
 	System.out.println("Printing empty ListInt mayfield...");
 	System.out.println(mayfield);
 
@@ -131,6 +137,9 @@ public class SuperArray implements List{
 	mayfield.add(1,77);
 	System.out.println("Printing ListInt mayfield post-insert...");
 	System.out.println(mayfield);
+
+	//	Object[] eric = {1,2,3,"bob"};
+	//	System.out.println(eric[3]);
     }//end main()
 
 }//end class SuperArray
