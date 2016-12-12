@@ -1,8 +1,8 @@
 /*
 Eric Li
 APCS1 pd4
-HW #37: Be More Rational
-2016-11-30
+HW #40: Rational Equality
+2016-12-07
  */
 public class Rational {
     private int numerator;
