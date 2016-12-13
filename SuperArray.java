@@ -1,3 +1,15 @@
+/*
+Eric Li
+APCS1 pd4
+HW44--In America, the Driver Sits on the Left
+2016-12-12
+
+ */
+
+
+
+
+
 /*==================================================
   class SuperArray version 2.0
   Wrapper class for array. Facilitates resizing, 
