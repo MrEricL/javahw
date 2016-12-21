@@ -1,3 +1,10 @@
+/*
+Eric Li
+APCS1 pd4
+HW #50: Selection, Natch
+2016-12-21
+ */
+
 /*======================================
   class SelectionSort -- implements SelectionSort algorithm
   ======================================*/
@@ -43,15 +50,24 @@ public class SelectionSort
 	//maxPos will point to position of SELECTION (greatest value)
     Comparable small= data.get(0);
     int ind;
+    Comparable old;
 	/* YOUR IMPLEMENTATION HERE */
     for ( int i = 0; i < data.size()-1;i++){
-	for (int x = i; x < data.size()-1;x++){
+	old= data.get(i);
+	ind= i;
+	for (int x = i; x <= data.size()-1;x++){
 	    if (small.compareTo(data.get(x)) > 0){
 		small = data.get(x);
 		ind=x;
 	    }
+
 	}
-	//remove the smallest and swap with i
+	data.remove(i);
+	data.add(i, small);
+	data.remove(ind);
+	data.add(ind, old);
+	small= data.get(i+1);
+
     }		
 		
 	
@@ -71,7 +87,7 @@ public class SelectionSort
 
     public static void main( String [] args ) 
 {
-
+	/*===============for VOID methods=============
 	ArrayList glen = new ArrayList<Integer>();
 	glen.add(7);
 	glen.add(1);
@@ -79,17 +95,22 @@ public class SelectionSort
 	glen.add(12);
 	glen.add(3);
 	System.out.println( "ArrayList glen before sorting:\n" + glen );
+	int i=0;
+	while (i < glen.size()){
 	selectionSortV(glen);
+	i++;
+	}
 	System.out.println( "ArrayList glen after sorting:\n" + glen );
 
-	/*===============for VOID methods=============
+
 	ArrayList coco = populate( 10, 1, 1000 );
 	System.out.println( "ArrayList coco before sorting:\n" + coco );
 	selectionSortV(coco);
 	System.out.println( "ArrayList coco after sorting:\n" + coco );
+
 	  ============================================*/
 
-	/*==========for AL-returning methods==========
+
     	ArrayList glen = new ArrayList<Integer>();
 	glen.add(7);
 	glen.add(1);
@@ -109,6 +130,7 @@ public class SelectionSort
 			    + cocoSorted );
 	System.out.println( "ArrayList coco after sorting:\n" + coco );
 	System.out.println( coco );
+	/*==========for AL-returning methods==========
 	  ============================================*/
 
     }//end main
