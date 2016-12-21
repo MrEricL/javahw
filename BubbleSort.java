@@ -57,15 +57,17 @@ public class BubbleSort
     // postcondition: data's elements sorted in ascending order
     public static void bubbleSortV( ArrayList<Comparable> data ) 
     {
-        Comparable x;
-	Comparable y;
-        int i=0;
-	while (i < data.size()){
-	    x= data.get(i);
-	    y= data.get(i+1);
-	    if (x.compareTo(y) == 1) {
-		data.remove(i
-
+	Comparable a;
+	Comparable b;
+        for (int i = 0; i < data.size() - 1; i ++){
+	    for (int x = 0; x < data.size() - 1; x ++){
+	        a = data.get(x);
+	        b = data.get(x + 1);
+		if (b.compareTo(a) < 0){
+		    data.set(x, b);
+		    data.set(x + 1, a);
+		}
+	    }
 	}
     }//end bubbleSortV
 
@@ -75,13 +77,17 @@ public class BubbleSort
     //                Returns sorted copy of input ArrayList.
     public static ArrayList<Comparable> bubbleSort( ArrayList<Comparable> input ) 
     {
-	/* YOUR IMPLEMENTATION HERE */
+	ArrayList<Comparable>  ret = input;
+	bubbleSortV(ret);
+	return ret;
+
+	
     }//end bubbleSort
 
 
     public static void main(String [] args)
     {
-	/*===============for VOID methods=============
+	/*
 	  ArrayList glen = new ArrayList<Integer>();
 	  glen.add(7);
 	  glen.add(1);
@@ -96,9 +102,8 @@ public class BubbleSort
 	  System.out.println( "ArrayList coco before sorting:\n" + coco );
 	  bubbleSortV(coco);
 	  System.out.println( "ArrayList coco after sorting:\n" + coco );
-	  ============================================*/
+	  */
 
-	/*==========for AL-returning methods==========
 	  ArrayList glen = new ArrayList<Integer>();
 	  glen.add(7);
 	  glen.add(1);
@@ -118,7 +123,7 @@ public class BubbleSort
 	  + cocoSorted );
 	  System.out.println( "ArrayList coco after sorting:\n" + coco );
 	  System.out.println( coco );
-	  ============================================*/
+	  
 
     }//end main
 

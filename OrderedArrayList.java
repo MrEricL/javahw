@@ -41,10 +41,41 @@ public class OrderedArrayList {
 	    }
 	}
     }
-    public  void addBinary(){
-	OrderedArrayList copy = game;
+    
+      public void  addBinary(Comparable newVal) {
 
-    }
+
+	int hi = _data.size();
+	int low = 0;	
+	int mid=(hi + low)/2;
+	int i=0;
+	// when empty
+	if (_data.size() == 0) {
+	    _data.add(newVal);
+	    return;
+	}
+
+	while (hi>= low &&  i < 10){
+	    if (newVal.compareTo(_data.get(mid)) == 0){
+		_data.add(mid, newVal);
+	        return;
+	    }
+	    else if (newVal.compareTo(_data.get(mid)) > 0){
+		hi = mid-1;
+	    }
+	    
+	    else if ((newVal.compareTo(_data.get(mid)) < 0)){
+		low = mid+1;
+	    }	
+
+	}
+	if (hi==low){
+	    _data.add(hi, newVal);
+	    return;
+	}
+
+	
+      }
     // main method solely for testing purposes
     public static void main( String[] args ) {
 	OrderedArrayList game = new OrderedArrayList();
@@ -55,8 +86,8 @@ public class OrderedArrayList {
 	    game.addLinear( valToAdd );
 	}
 	System.out.println( game );
-	System.out.println( game.size() );
-	addBinary();
+	game.addBinary(31);
+	
 	System.out.println( game );
     }
 
