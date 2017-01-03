@@ -1,10 +1,31 @@
+import java.util.ArrayList;
 public class MySorts{
     // helper functions
-    public Comparable intSort (Comparable x){
+    public ArrayList inSort (Comparable x){
 	return bubbleSort(x);	
     }
+    public static ArrayList generate(){
+	ArrayList<Integer> ran = new ArrayList<Integer>();
+	int length= 10 + (int)(Math.random()*20);
+	while (length > 0){
+	    ran.add((int)(Math.random() * 10001)); //randomly adds an int from 0 -10000
+	    length--;
+	}
+	return ran;
+    }
 
-    //Bubble sort
+    public static int[]  passPrint(Comparable x){
+	int[] results = new int[3];
+	//	System.out.println("Passes for bubble sort is: " + bubbleSort(x));
+	results[0]= bubbleSort(x);
+	//	System.out.println("Passes for bubble sort is: " + insertionSort(x));
+	results[1]=insertionSort(x);
+	//	System.out.println("Passes for bubble sort is: " + selectionSort(x));
+	results[2]= selectionSort(x);
+	return results;
+    }
+
+    //Bubble sort--------------------------------------------------------------------------------------------------------------------
     public static void bubbleSortV( ArrayList<Comparable> data ) 
     {
 	Comparable a;
@@ -25,57 +46,36 @@ public class MySorts{
 	ArrayList<Comparable>  ret = input;
 	bubbleSortV(ret);
 	return ret;	
-    }//end bubbleSort
+    }//end bubbleSort-------------------------------------------------------------------------------------------------------------------
 
-    //Insertion sort
-    public static void insertionSortV( ArrayList<Comparable> data ) 
-    {
-	for( int partition = 1; partition < data.size(); partition++ ) {
-            //partition marks first item in unsorted region
+    //Insertion sort_____________________________________________________________________________________
+ 
+ // end insertion sort __________________________________________________________________________________
 
-            //diag:
-            System.out.println( "\npartition: " + partition + "\tdataset:");
-            System.out.println( data ); 
+    //selection sort~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            //traverse sorted region from right to left
-            for( int i = partition; i > 0; i-- ) {
-
-                // "walk" the current item to where it belongs
-                // by swapping adjacent items
-                if ( data.get(i).compareTo( data.get(i-1) ) < 0 ) {
-                    //diag:
-                    System.out.println( "swap indices "+(i-1)+" & "+i+"..." );
-                    data.set( i, data.set( i-1, data.get(i) ) ); 
-                }
-                else 
-                    break; 
-            }
-        }
-    }
-    public static ArrayList<Comparable> insertionSort( ArrayList<Comparable> input ) 
-    {
-	//declare and initialize empty ArrayList for copying
-        ArrayList<Comparable> data = new ArrayList<Comparable>();
-
-        //copy input ArrayList into working ArrayList
-        for( Comparable o : input )
-            data.add( o );
-
-        //sort working ArrayList
-        insertionSortV( data );
-
-        //return working ArrayList
-        return data;
-    }
-
-
-    //selection sort
-
-
+    // end selection sort~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public static void main( String[] args ) {
-	Comparable sorted;
-	
-
+        ArrayList sorted;
+	ArrayList data;
+	int iterator=0;
+	double avgB=0;
+	double  avgI=0;
+	double avgS=0;
+	int[] results;
+	while (iterator < 100){
+	    data=generate();
+	    sorted=inSort();
+	    results=passPrint(data);
+	    avgB+= results[0];
+	    avgI+=results[1];
+	    avgS+=results[2];
+	    System.out.println("\n\n-----------------------------------------------------------------------\n\n");
+	}
+	avgB/=100;
+	avgI/=100;
+	avgS/=100;
+	System.out.println(avgB+"\n"+avgl+"\n"+avgS);
 
   }
 

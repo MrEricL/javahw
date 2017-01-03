@@ -55,11 +55,12 @@ public class BubbleSort
     // VOID version of bubbleSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void bubbleSortV( ArrayList<Comparable> data ) 
+    public static void bubbleSortV( ArrayList<Comparable> data, ArrayList <Comparable>  perfect ) 
     {
 	Comparable a;
 	Comparable b;
         for (int i = 0; i < data.size() - 1; i ++){
+	    //HERE????
 	    for (int x = 0; x < data.size() - 1; x ++){
 	        a = data.get(x);
 	        b = data.get(x + 1);
@@ -68,6 +69,7 @@ public class BubbleSort
 		    data.set(x + 1, a);
 		}
 	    }
+
 	}
     }//end bubbleSortV
 
@@ -79,31 +81,39 @@ public class BubbleSort
     {
 	ArrayList<Comparable>  ret = input;
 	bubbleSortV(ret);
-	return ret;
-
-	
+	return ret;	
     }//end bubbleSort
 
 
+    public static  boolean comp (ArrayList<Comparable>  x, ArrayList <Comparable> y){
+	for (int i=0; i < x.size() ; i++){
+	    if (x.get(i).compareTo(y.get(i)) != 0){
+		    return false;
+		}
+	}
+	    return true;
+    }
     public static void main(String [] args)
     {
-	/*
+
 	  ArrayList glen = new ArrayList<Integer>();
 	  glen.add(7);
 	  glen.add(1);
 	  glen.add(5);
 	  glen.add(12);
 	  glen.add(3);
-	  System.out.println( "ArrayList glen before sorting:\n" + glen );
-	  bubbleSortV(glen);
-	  System.out.println( "ArrayList glen after sorting:\n" + glen );
+	  ArrayList coco = populate( 10, 1, 1000 );
+	  bubbleSortV(coco);
 
+	  //	  System.out.println( "ArrayList glen before sorting:\n" + glen );
+	  bubbleSortV(glen);
+	  /*
 	  ArrayList coco = populate( 10, 1, 1000 );
 	  System.out.println( "ArrayList coco before sorting:\n" + coco );
 	  bubbleSortV(coco);
 	  System.out.println( "ArrayList coco after sorting:\n" + coco );
 	  */
-
+	/*
 	  ArrayList glen = new ArrayList<Integer>();
 	  glen.add(7);
 	  glen.add(1);
@@ -123,7 +133,7 @@ public class BubbleSort
 	  + cocoSorted );
 	  System.out.println( "ArrayList coco after sorting:\n" + coco );
 	  System.out.println( coco );
-	  
+	*/
 
     }//end main
 
