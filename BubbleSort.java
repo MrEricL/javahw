@@ -1,23 +1,3 @@
-/*======================================
-  class BubbleSort -- implements bubblesort algorithm (vanilla version)
-
-                      ..------..                          
-               /~~-.-~__-'`-__  ~-.  .-~-.                
-              |   /~~~\     / ~~---\|     |               
-              |  ||| * |   | | |  * |     |               
-              /_-|\ \ /     \ \ \__.|\.  |                
-              ~   \~~   |_|   ~~~~ /   ~-.\               
-                   ~-.._      _.-~~                       
-                     .--~~~~~~--.                         
-                    |  |______|  |                        
-                     ~-|______|-~                         
-                       |      |                           
-                       |______|                           
-                       |  |   |                           
-                       |__|___|                           
-                       |_|| _||                        
-                       `--'`--'                           
-  ======================================*/
 
 import java.util.ArrayList;
 
@@ -55,44 +35,98 @@ public class BubbleSort
     // VOID version of bubbleSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void bubbleSortV( ArrayList<Comparable> data, ArrayList <Comparable>  perfect ) 
+    public static int bubbleSortV( ArrayList<Comparable> d, ArrayList <Comparable>  perfect) 
     {
+	ArrayList<Comparable> data = d;
 	Comparable a;
 	Comparable b;
+	int g=0;
         for (int i = 0; i < data.size() - 1; i ++){
-	    //HERE????
-	    for (int x = 0; x < data.size() - 1; x ++){
-	        a = data.get(x);
-	        b = data.get(x + 1);
-		if (b.compareTo(a) < 0){
-		    data.set(x, b);
-		    data.set(x + 1, a);
+	    if (!comp(data)){
+		for (int x = 0; x < data.size() - 1; x ++){
+		    a = data.get(x);
+		    b = data.get(x + 1);
+		    if (b.compareTo(a) < 0){
+			data.set(x, b);
+			data.set(x + 1, a);
+		    }
 		}
+		g+=1;
 	    }
-
+	    else{
+		return g;
+	    }
 	}
+	return -1;
     }//end bubbleSortV
 
 
     // ArrayList-returning bubbleSort
     // postcondition: order of input ArrayList's elements unchanged
     //                Returns sorted copy of input ArrayList.
-    public static ArrayList<Comparable> bubbleSort( ArrayList<Comparable> input ) 
+    public static void  bubbleSort( ArrayList<Comparable> input ) 
     {
-	ArrayList<Comparable>  ret = input;
-	bubbleSortV(ret);
-	return ret;	
+	//	ArrayList<Comparable>  ret = input;
+	//	bubbleSortV(ret);
+	//	return ret;	
     }//end bubbleSort
 
 
-    public static  boolean comp (ArrayList<Comparable>  x, ArrayList <Comparable> y){
-	for (int i=0; i < x.size() ; i++){
-	    if (x.get(i).compareTo(y.get(i)) != 0){
-		    return false;
+    public static  boolean comp (ArrayList<Comparable>  x){
+	for (int i=0; i < x.size()-1 ; i++){
+	    if (x.get(i).compareTo(x.get(i+1)) >= 0) return false;
+	}
+	return true;
+		
+    }
+    
+    public static int smallest (ArrayList<Comparable> x, Comparable y, int b){
+	Comparable z=null; // is the element in the comparision list
+
+	for (int a=b; a >= 0; a--){
+	    	if (b==0 || a==0){
+		    if (y.compareTo(x.get(0)) >= 0) return 1;
+		    else return 0;
+		}
+		else {
+		    z= x.get(a-1);
+		    if (y.compareTo(z) >= 0) return a;
+
 		}
 	}
-	    return true;
+
+	return 0;
+
+	
     }
+
+    
+    public static int insertionSortV( ArrayList<Comparable> given) 
+    {
+	ArrayList <Comparable> data = given;
+	int part=1;
+	int indexinsert=0;
+
+	int g= 0;
+	
+	while (part <= data.size()){
+	    if (!comp(data)){	    
+		if (data.get(part) .compareTo(data.get(part-1)) > 0) part++ ; 
+		else{
+		    indexinsert= smallest(data, data.get(part), part-1);
+		    data.add(indexinsert, data.get(part));
+		    data.remove(part+1);
+		    part++;
+		}
+	        g+=1;
+	    }
+	    else return g;	    
+	}
+	return -1;
+    }
+	
+
+    
     public static void main(String [] args)
     {
 
@@ -102,11 +136,15 @@ public class BubbleSort
 	  glen.add(5);
 	  glen.add(12);
 	  glen.add(3);
-	  ArrayList coco = populate( 10, 1, 1000 );
-	  bubbleSortV(coco);
+	  ArrayList coco = new ArrayList < Integer>();
 
-	  //	  System.out.println( "ArrayList glen before sorting:\n" + glen );
-	  bubbleSortV(glen);
+	  coco.add(1);
+	  coco.add(3);	  
+	  coco.add(5);
+	  coco.add(7);	  
+	  coco.add(12);
+
+	  System.out.println( insertionSortV(glen));
 	  /*
 	  ArrayList coco = populate( 10, 1, 1000 );
 	  System.out.println( "ArrayList coco before sorting:\n" + coco );
@@ -138,38 +176,3 @@ public class BubbleSort
     }//end main
 
 }//end class BubbleSort
-
-
-
-/***
-Bulbasaur by Maija Haavisto
-                                           /
-                        _,.------....___,.' ',.-.
-                     ,-'          _,.--"        |
-                   ,'         _.-'              .
-                  /   ,     ,'                   `
-                 .   /     /                     ``.
-                 |  |     .                       \.\
-       ____      |___._.  |       __               \ `.
-     .'    `---""       ``"-.--"'`  \               .  \
-    .  ,            __               `              |   .
-    `,'         ,-"'  .               \             |    L
-   ,'          '    _.'                -._          /    |
-  ,`-.    ,".   `--'                      >.      ,'     |
- . .'\'   `-'       __    ,  ,-.         /  `.__.-      ,'
- ||:, .           ,'  ;  /  / \ `        `.    .      .'/
- j|:D  \          `--'  ' ,'_  . .         `.__, \   , /
-/ L:_  |                 .  "' :_;                `.'.'
-.    ""'                  """""'                    V
- `.                                 .    `.   _,..  `
-   `,_   .    .                _,-'/    .. `,'   __  `
-    ) \`._        ___....----"'  ,'   .'  \ |   '  \  .
-   /   `. "`-.--"'         _,' ,'     `---' |    `./  |
-  .   _  `""'--.._____..--"   ,             '         |
-  | ." `. `-.                /-.           /          ,
-  | `._.'    `,_            ;  /         ,'          .
- .'          /| `-.        . ,'         ,           ,
- '-.__ __ _,','    '`-..___;-...__   ,.'\ ____.___.'
- `"^--'..'   '-`-^-'"--    `-^-'`.''"""""`.,^.`.--' mh
-
-***/

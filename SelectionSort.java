@@ -43,94 +43,73 @@ public class SelectionSort
     // VOID version of SelectionSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void selectionSortV( ArrayList<Comparable> data ) 
-{
-	//note: this version places greatest value at rightmost end,
+    public static int  selectionSortV( ArrayList<Comparable> given, ArrayList <Comparable> perfect ) 
+    {
+	ArrayList<Comparable> data = given;
+	Comparable small= data.get(0);
+	int ind;
+	Comparable old;
 
-	//maxPos will point to position of SELECTION (greatest value)
-    Comparable small= data.get(0);
-    int ind;
-    Comparable old;
-	/* YOUR IMPLEMENTATION HERE */
-    for ( int i = 0; i < data.size()-1;i++){
-	old= data.get(i);
-	ind= i;
-	for (int x = i; x <= data.size()-1;x++){
-	    if (small.compareTo(data.get(x)) > 0){
-		small = data.get(x);
-		ind=x;
-	    }
-
+	int g=0; //PASSES
+	
+	for ( int i = 0; i < data.size()-1;i++){
+	    	    if (!comp(data,perfect)){
+			old= data.get(i);
+			ind= i;
+			for (int x = i; x <= data.size()-1;x++){
+			    if (small.compareTo(data.get(x)) > 0){
+				small = data.get(x);
+				ind=x;
+			    }
+			}
+			data.remove(i);
+			data.add(i, small);
+			data.remove(ind);
+			data.add(ind, old);
+			small= data.get(i+1);
+			g+=1;
+		    }
+		    else {
+			return g;
+		    }
 	}
-	data.remove(i);
-	data.add(i, small);
-	data.remove(ind);
-	data.add(ind, old);
-	small= data.get(i+1);
-
+	return -1;
     }		
 		
-	
-    }//end selectionSort
+	//end selectionSort
 
+    public static  boolean comp (ArrayList<Comparable>  x, ArrayList <Comparable> y){
+	for (int i=0; i < x.size() ; i++){
+	    if (x.get(i).compareTo(y.get(i)) != 0){
+		    return false;
+		}
+	}
+	    return true;
+    }
 
-    // ArrayList-returning selectionSort
-    // postcondition: order of input ArrayList's elements unchanged
-    //                Returns sorted copy of input ArrayList.
-    public static ArrayList<Comparable> selectionSort( ArrayList<Comparable> input ) 
-{
-    ArrayList<Comparable> ret = input;
-    selectionSortV(ret);
-    return ret;
-    }//end selectionSort 
 
 
     public static void main( String [] args ) 
-{
+    {
+
+	  ArrayList glen = new ArrayList<Integer>();
+	  glen.add(7);
+	  glen.add(1);
+	  glen.add(5);
+	  glen.add(12);
+	  glen.add(3);
+	  ArrayList coco = new ArrayList < Integer>();
+
+	  coco.add(1);
+	  coco.add(3);	  
+	  coco.add(5);
+	  coco.add(7);	  
+	  coco.add(12);
+
+	  System.out.println( selectionSortV(glen,coco));
+	
 	/*===============for VOID methods=============
-	ArrayList glen = new ArrayList<Integer>();
-	glen.add(7);
-	glen.add(1);
-	glen.add(5);
-	glen.add(12);
-	glen.add(3);
-	System.out.println( "ArrayList glen before sorting:\n" + glen );
-	int i=0;
-	while (i < glen.size()){
-	selectionSortV(glen);
-	i++;
-	}
-	System.out.println( "ArrayList glen after sorting:\n" + glen );
 
-
-	ArrayList coco = populate( 10, 1, 1000 );
-	System.out.println( "ArrayList coco before sorting:\n" + coco );
-	selectionSortV(coco);
-	System.out.println( "ArrayList coco after sorting:\n" + coco );
-
-	  ============================================*/
-
-
-    	ArrayList glen = new ArrayList<Integer>();
-	glen.add(7);
-	glen.add(1);
-	glen.add(5);
-	glen.add(12);
-	glen.add(3);
-	System.out.println( "ArrayList glen before sorting:\n" + glen );
-	ArrayList glenSorted = selectionSort( glen );
-	System.out.println( "sorted version of ArrayList glen:\n" 
-			    + glenSorted );
-	System.out.println( "ArrayList glen after sorting:\n" + glen );
-
-      	ArrayList coco = populate( 10, 1, 1000 );
-	System.out.println( "ArrayList coco before sorting:\n" + coco );
-	ArrayList cocoSorted = selectionSort( coco );
-	System.out.println( "sorted version of ArrayList coco:\n" 
-			    + cocoSorted );
-	System.out.println( "ArrayList coco after sorting:\n" + coco );
-	System.out.println( coco );
-	/*==========for AL-returning methods==========
 	  ============================================*/
 
     }//end main
