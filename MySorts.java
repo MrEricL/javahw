@@ -1,8 +1,3 @@
-
-
-
-
-
 /* What is this ungodly mess? 
 The idea of this is to modify each of the programs to be optimized for the maximum number of passes
 Now what I do is run each program on a randomly generated array list of ~10-30 integers
@@ -24,14 +19,9 @@ FINDINGS ------
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-
 public class MySorts{
     // helper functions
-
-
-    
-    
+       
     public static ArrayList generate(){
 	ArrayList<Integer> ran = new ArrayList<Integer>();
 	int length= 10 + (int)(Math.random()*20);
@@ -93,27 +83,31 @@ public class MySorts{
     //end bubbleSort-------------------------------------------------------------------------------------------------------------------
 
     //Insertion sort_____________________________________________________________________________________
-    
-    public static int smallest (ArrayList<Comparable> x, Comparable y, int b){
-	Comparable z=null; // is the element in the comparision list
+    public static int  insertionSortV( ArrayList<Comparable> data ) 
+    {  int g= 0;
+	for( int partition = 1; partition < data.size(); partition++ ) {
+            //partition marks first item in unsorted region
+	    if (!comp(data)){	    
+		//diag:
+		System.out.println( "\npartition: " + partition + "\tdataset:");
+		System.out.println( data ); 
 
-	for (int a=b; a >= 0; a--){
-	    	if (b==0 || a==0){
-		    if (y.compareTo(x.get(0)) >= 0) return 1;
-		    else return 0;
-		}
-		else {
-		    z= x.get(a-1);
-		    if (y.compareTo(z) >= 0) return a;
+		//traverse sorted region from right to left
+		for( int i = partition; i > 0; i-- ) {
 
+		    // "walk" the current item to where it belongs
+		    // by swapping adjacent items
+		    if ( data.get(i).compareTo( data.get(i-1) ) < 0 ) {
+			//diag:
+			System.out.println( "swap indices "+(i-1)+" & "+i+"..." );
+			data.set( i, data.set( i-1, data.get(i) ) ); 
+		    }
+		    else return g; 
+		    g+=1;
 		}
+	    }
 	}
-
-	return 0;
-
-	
     }
-
     
     public static int insertionSort( ArrayList<Comparable> given) 
     {
