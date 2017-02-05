@@ -1,0 +1,8 @@
+public interface casinorules{
+
+
+    void play(); //this is what runs the entire game
+
+
+
+}
