@@ -1,3 +1,0 @@
-# javahw
-
-My java hw.
