@@ -33,7 +33,7 @@ public class MergeSort{
 		x++;
 	    }
 
-	    if (a[x] >= b[y]) {
+	    else if (a[x] >= b[y]) {
 		c[z] = b[y];
 		y++;		
 	    }
