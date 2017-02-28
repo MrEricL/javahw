@@ -115,13 +115,22 @@ class TourFinder
 	}
 	//other base case: stepped off board or onto visited cell
 	if (no (x,y)){
-	    findTour (x,y, //bakctrack
+	    findTour (x,y, //backtrack
 	}
 	//otherwise, mark current location
 	//and recursively generate tour possibilities from current pos
 	else {
 
-	    /* YOUR KODE HERE */
+	    board[x][y] = move;
+	    for (int i=0; i< 8;i++){
+		if (i==0) ;
+		if (i==1);
+		if (i==2);
+		if (i==0) ;
+		if (i==1);
+		if (i==2);
+
+	    }
 
 	    //delay(1000); //uncomment to slow down enough to view
 
