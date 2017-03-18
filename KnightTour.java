@@ -3,10 +3,10 @@
   Animates a Knight's Tour of a square chess board.
 
   Mean execution times for boards of size n*n:
-  n=5   __s    over __ executions 
-  n=6   __s    over __ executions
-  n=7   __s    over __ executions
-  n=8   __s    over __ executions
+  n=5   3.20s    over 2  executions 
+  n=6   5.20s    over 2  executions
+  n=7   15.2s    over 2  executions
+  n=8   30.0s    over 2  executions
   ======================================*/
 
 /***
@@ -32,6 +32,8 @@ class TourFinder
     private int[][] board;
     private int sideLength; //board has dimensions n x n
     private boolean solved = false;
+
+
 
     //constructor
     public TourFinder( int n ) {
@@ -93,6 +95,8 @@ class TourFinder
      * @param moves  number of moves made so far
      *********************************************/
 
+    //checks if spot is valid, returns true if its not valid
+
     public boolean no(int x, int y){
 	if (board[x][y] !=0) return true;
 	else return false;
@@ -100,8 +104,8 @@ class TourFinder
     }
     public void findTour( int x, int y, int moves ) 
     {
-	//delay(50); //slow it down enough to be followable
-
+	//	delay(50); //slow it down enough to be followable
+	System.out.println( this ); //refresh screen
 	//if a tour has been completed, stop animation
 	if ( solved ){
 	    System.exit(0);
@@ -109,30 +113,30 @@ class TourFinder
 	}
 
 	//primary base case: tour completed
-	if ( moves >=  board.length*board.length){
+	if ( moves >= ( board.length*board.length)){
 	    solved=true;
-	    findTour (0,0,moves);
+	    return;
 	}
 	//other base case: stepped off board or onto visited cell
-	if (no (x,y)){
-	    findTour (x,y, //backtrack
+	if (board[x][y]!=0){
+	    //backtrack
 	}
 	//otherwise, mark current location
 	//and recursively generate tour possibilities from current pos
 	else {
 
-	    board[x][y] = move;
-	    for (int i=0; i< 8;i++){
-		if (i==0) ;
-		if (i==1);
-		if (i==2);
-		if (i==0) ;
-		if (i==1);
-		if (i==2);
+	    board[x][y] = moves;
+	    findTour(x - 1, y - 2, moves + 1);
+	    findTour(x + 1, y - 2, moves + 1);
+	    findTour(x + 2, y - 1, moves + 1);
+	    findTour(x + 2, y + 1, moves + 1);
+	    findTour(x + 1, y + 2, moves + 1);
+	    findTour(x - 1, y + 2, moves + 1);
+	    findTour(x - 2, y + 1, moves + 1);
+	    findTour(x - 2, y - 1, moves + 1);
+	
 
-	    }
-
-	    //delay(1000); //uncomment to slow down enough to view
+	    //	       delay(1000); //uncomment to slow down enough to view
 
 	    /*======================================
 	      Recursively try to solve (find tour) from 
@@ -147,10 +151,12 @@ class TourFinder
 	    /* YOUR KODE HERE */
 
 	    //If made it this far, path did not lead to tour, so back up.
+	       
 
-	    /* YOUR KODE HERE */
+	       board[x][y]=0;
+       
 
-	    System.out.println( this ); //refresh screen
+	       //  System.out.println( this ); //refresh screen
 	}
     }//end findTour()
 
@@ -169,8 +175,8 @@ public class KnightTour
 	    System.out.println( "Invalid input. Using board size " 
 				+ n + "..." );
 	}
-
 	TourFinder tf = new TourFinder( n );
+
 
 	//clear screen using ANSI control code
 	System.out.println( "[2J" ); 
