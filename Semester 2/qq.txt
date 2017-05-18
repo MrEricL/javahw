@@ -1,0 +1,20 @@
+Eric Li
+APCS2 pd3
+HW#07: Xiang’s Troubles
+2017-02-16
+
+
+2x2
+	Impossible since a queen no matter where is the maximum
+3x3
+	See 2X2
+4x4
+	Seems to be only one solution (not counting reflection) since it default locks down on to one solution. All solutions thereafter are possible since 4 is, it simply adds a row and a column, and thus they all have at least one unique solution.
+5x5
+	2 solutions, since there are two ways new unique ways to fit the row/column to produce solution.
+6x6
+	1 solution since when the board becomes even, that means that the left/top most diagonal is connected to the right/bottom most and thus even when a row/column is added the even size board elminates it down to one.
+7x7
+	Empirically, at least 5 unique solutions.
+8x8
+	Applying the rule from before with the diagonals, every solution generates two more base on row/column placement so therefore there is at least 10 unique solutions.

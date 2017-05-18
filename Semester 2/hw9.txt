@@ -1,0 +1,28 @@
+Eric Li
+APCS2 pd3
+HW #09: Get On the.Bus, Cuz We’re Going for a Riiiiiiiiiiiiiiiiiide!
+2017-02-28
+
+
+Knights Tour Algorithm 
+1. Create nxn board
+2. Place the knight at 0, 0
+3. Make a knights move and continues to recurse
+4. If it cannot make a knights move, try a different move
+5. If it is unable to move for all, go back one and try different move
+6. Repeat until all moves are exhuasted
+5. Check to make sure all the board is filled
+
+For example:
+	
+	| 1	|8 	|13|10|
+	| 11|   | 4|7 |
+	| 5	| 2	| 9	|12 |
+	| 	| 	| 6	| 3  |
+	
+	no moves!
+	
+	| 1	|8|	 	|10|
+	| 11| 	  | 4|7 |
+	| 5	| 2	| 9	|12 |
+	|	| 	| 6	| 3  |

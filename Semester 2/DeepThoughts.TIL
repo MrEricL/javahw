@@ -1,0 +1,21 @@
+Part 1
+Q1:  I think there will always be an open tour. For my program, I modified it and placed the first 5 moves so that it can't be closed, and it was still solved. If this is true for 5x5, all larger boards it's possible.
+|  |  |  |  |  |
+|  |  | 4|  |  |
+| 3|  |  |  | 5|
+|  |  | 2|  |  |
+|  |  |  |  | 1|
+precondition and it was still solved
+
+Q2: No for odd number boards, since knights move from white to black or vice versa, that means there has to be an equal amount of black to white for it to be closed.
+
+Q3: It seems to be increasing exponentially, but while the a 5x5 takes 0.2 seconds, an 8x8 takes nearly 30 seconds, so it's large than exponentially.
+
+Q4: One option is to start from 0,0 since there is less choices compared to the middle. 2 possible options vs 8. Maybe the path with the least options is the less time extensive. Although it might not find the answer, it can help eliminate more choices faster.
+
+Since instead of a wild tree you can have a smaller shrub since less options = less recursing which may be useful.
+
+Part 2
+
+Do the backtracking algorithm but check for the square with the least number possibility. So when it's recursing check how many valid spaces are possible on the square, and then choose that path first.
+
